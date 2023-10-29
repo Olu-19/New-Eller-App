@@ -41,7 +41,7 @@ const ChatHeader = ({
                 {type === "conversation" && (
                     <ChatVideoButton />
                 )}
-                <SocketIndicator />
+                {/* <SocketIndicator /> */}
             </div>
         </div>
     );
