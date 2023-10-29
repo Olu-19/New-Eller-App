@@ -78,7 +78,9 @@ const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
 
   return (
     <div className="flex flex-col w-full h-full text-primary dark:bg-[#2B2D31] bg-[#F2F3F5]">
-      <ServerHeader server={server} role={role} />
+      <div className="pr-8 lg:pr-0">
+        <ServerHeader server={server} role={role} />
+      </div>
       <ScrollArea className="flex-1 px-3">
         <div className="mt-2">
           <ServerSearch
@@ -93,7 +95,7 @@ const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
                 })),
               },
               {
-                label: "Voice Channels",
+                label: "Voice Call Channels",
                 type: "channel",
                 data: audioChannels?.map((channel) => ({
                   id: channel.id,
@@ -102,7 +104,7 @@ const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
                 })),
               },
               {
-                label: "Video Channels",
+                label: "Video Call Channels",
                 type: "channel",
                 data: videoChannels?.map((channel) => ({
                   id: channel.id,
@@ -146,7 +148,7 @@ const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
         {!!audioChannels?.length && (
           <div className="mb-2">
             <ServerSection
-              label="Voice Channels"
+              label="Voice Call Channels"
               sectionType="channels"
               channelType={ChannelType.AUDIO}
               role={role}
@@ -166,7 +168,7 @@ const ServerSidebar = async ({ serverId }: ServerSidebarProps) => {
         {!!videoChannels?.length && (
           <div className="mb-2">
             <ServerSection
-              label="Video Channels"
+              label="Video Call Channels"
               sectionType="channels"
               channelType={ChannelType.VIDEO}
               role={role}

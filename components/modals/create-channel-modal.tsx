@@ -6,7 +6,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { NextResponse } from "next/server";
-import { ChannelType } from "@prisma/client";
+import { Channel, ChannelType } from "@prisma/client";
 import { useParams, useRouter } from "next/navigation";
 
 import {
@@ -23,6 +23,7 @@ import {
   DialogFooter,
   DialogContent,
   DialogTitle,
+  DialogDescription,
 } from "@/components/ui/dialog";
 import {
   Select,
@@ -33,9 +34,17 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useEffect } from "react";
+import { Hash, Mic, Video } from "lucide-react";
 
 import { useModal } from "@/hooks/use-modal-store";
-import { useEffect } from "react";
+import { db } from "@/lib/db";
+
+const iconMap = {
+  [ChannelType.TEXT]: <Hash className="w-4 h-4 ml-2" />,
+  [ChannelType.AUDIO]: <Mic className="w-4 h-4 ml-2" />,
+  [ChannelType.VIDEO]: <Video className="w-4 h-4 ml-2" />,
+};
 
 const formSchema = z.object({
   name: z
@@ -55,7 +64,6 @@ const CreateChannelModal = () => {
   const { channelType } = data;
 
   const params = useParams();
-
   const router = useRouter();
 
   const isModalOpen = isOpen && type === "createChannel";
@@ -108,6 +116,9 @@ const CreateChannelModal = () => {
           <DialogTitle className="text-2xl text-center font-bold">
             Create Channel
           </DialogTitle>
+          <DialogDescription className="text-zinc-500 text-start pt-2">
+            You can create a text channel, a voice call channel or a video call channel.
+          </DialogDescription>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
