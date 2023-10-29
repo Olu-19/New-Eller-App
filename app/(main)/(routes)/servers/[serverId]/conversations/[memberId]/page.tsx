@@ -13,6 +13,7 @@ interface MemberIdPageProps {
   params: {
     serverId: string;
     memberId: string;
+    channelId: string;
   };
   searchParams: {
     video?: boolean;
@@ -41,6 +42,12 @@ const MemberIdPage = async ({ params, searchParams }: MemberIdPageProps) => {
     return redirect("/");
   }
 
+  const channel = await db.channel.findUnique({
+    where: {
+      id: params.channelId,
+    },
+  });
+
   const conversation = await getOrCreateConversation(
     currentMember.id,
     params.memberId
@@ -58,6 +65,7 @@ const MemberIdPage = async ({ params, searchParams }: MemberIdPageProps) => {
   return (
     <div className="bg-white dark:bg-[#313338] flex flex-col h-[100vh]">
       <ChatHeader
+        channel={channel!}
         serverId={params.serverId}
         name={othermember.profile.name}
         type="conversation"
