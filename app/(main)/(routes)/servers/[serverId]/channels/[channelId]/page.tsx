@@ -24,7 +24,7 @@ const ChannelIdPage = async ({ params }: ChannelIdPageProps) => {
     return redirectToSignIn();
   }
 
-  const channel = await db.channel.findUnique({
+  const channel = await db.channel.findFirst({
     where: {
       id: params.channelId,
     },

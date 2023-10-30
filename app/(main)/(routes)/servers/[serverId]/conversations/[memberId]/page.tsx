@@ -42,7 +42,7 @@ const MemberIdPage = async ({ params, searchParams }: MemberIdPageProps) => {
     return redirect("/");
   }
 
-  const channel = await db.channel.findUnique({
+  const channel = await db.channel.findFirst({
     where: {
       id: params.channelId,
     },
