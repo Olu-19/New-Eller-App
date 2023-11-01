@@ -13,7 +13,7 @@ import { QueryProvider } from "@/components/providers/query-provider";
 const font = Open_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Eller",
+  title: "Eccentrik",
   description: "A lightening-speed, fully functional Next.js application.",
 };
 
