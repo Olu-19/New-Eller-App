@@ -32,8 +32,8 @@ const ChatVoiceButton = () => {
           side="bottom"
           label={tooltipLabel}
         >
-            <button onClick={onClick} className="hover:opacity-75 mr-4 transition">
-                <Icon className="w-5 h-5 text-zinc-500 dark:text-zinc-400" />
+            <button onClick={onClick} className="hover:opacity-75 transition">
+                <Icon className="w-5 h-5 text-zinc-500 dark:text-zinc-300" />
             </button>
         </ActionTooltip>
     );

@@ -1,12 +1,12 @@
 import { Hash, Mic, Video } from "lucide-react";
+import { Channel } from "@prisma/client";
 
 import MobileToggle from "@/components/mobile-toggle";
 import UserAvatar from "@/components/user-avatar";
 import SocketIndicator from "@/components/socket-indicator";
 import ChatVideoButton from "@/components/chat/ChatVideoButton";
 import ChatVoiceButton from "@/components/chat/ChatVoiceButton";
-import { Channel } from "@prisma/client";
-import { channel } from "diagnostics_channel";
+import { Separator } from "@/components/ui/separator";
 
 interface ChatHeaderProps {
     channel: Channel;
@@ -44,14 +44,20 @@ const ChatHeader = ({
             <p className="text-md font-semibold text-black dark:text-white">
                 {name}
             </p>
-            <div className="ml-auto flex items-center">
-                {type === "conversation" && (
-                    <ChatVoiceButton />
-                )}
-                {type === "conversation" && (
-                    <ChatVideoButton />
-                )}
-                {/* <SocketIndicator /> */}
+            <div className="ml-auto flex">
+                <div className="flex items-center justify-center rounded-md py-1 px-2 bg-zinc-200 dark:bg-zinc-700">
+                  {type === "conversation" && (
+                      <ChatVoiceButton />
+                  )}
+                  <Separator
+                    orientation="vertical"
+                    className="h-4 bg-zinc-300 dark:bg-zinc-600 rounded-md w-[2px] mx-2"
+                  />
+                  {type === "conversation" && (
+                      <ChatVideoButton />
+                  )}
+                  {/* <SocketIndicator /> */}
+                </div>
             </div>
         </div>
     );
