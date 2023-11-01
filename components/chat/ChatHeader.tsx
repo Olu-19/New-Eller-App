@@ -45,21 +45,20 @@ const ChatHeader = ({
                 {name}
             </p>
             <div className="ml-auto flex">
+              {type === "channel" || type === "conversation" && (
                 <div className="flex items-center justify-center rounded-md py-1 px-2 bg-zinc-200 dark:bg-zinc-700">
                   {type === "conversation" && (
                       <ChatVoiceButton />
                   )}
-                  {type === "channel" || type === "conversation" && (
-                    <Separator
-                      orientation="vertical"
-                      className="h-4 bg-zinc-300 dark:bg-zinc-600 rounded-md w-[2px] mx-2"
-                    />
-                  )}
+                  <Separator
+                    orientation="vertical"
+                    className="h-4 bg-zinc-300 dark:bg-zinc-600 rounded-md w-[2px] mx-2"
+                  />
                   {type === "conversation" && (
                       <ChatVideoButton />
                   )}
-                  {/* <SocketIndicator /> */}
                 </div>
+              )}
             </div>
         </div>
     );
