@@ -6,7 +6,7 @@ import qs from "query-string";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { NextResponse } from "next/server";
-import { Plus, SendHorizonalIcon } from "lucide-react";
+import { Plus, Send, SendHorizonalIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 import {
@@ -19,6 +19,8 @@ import { Input } from "@/components/ui/input";
 import EmojiPicker from "@/components/EmojiPicker";
 
 import { useModal } from "@/hooks/use-modal-store";
+import { Button } from "../ui/button";
+import { cn } from "@/lib/utils";
 
 interface ChatInputProps {
     apiUrl: string;
@@ -98,9 +100,15 @@ const ChatInput = ({
                                       onChange={(emoji: string) => field.onChange(`${field.value} ${emoji}`)}
                                     />
                                 </div>
-                                <button className="absolute top-7 right-8">
-                                    <SendHorizonalIcon className="text-zinc-500 dark:text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 transition" />
-                                </button>
+                                <Button
+                                  disabled={isLoading}
+                                  className={cn(
+                                    "absolute top-5 right-8 bg-transparent hover:bg-transparent p-0 text-green-400 hover:text-green-300 transition",
+                                    isLoading && "text-zinc-500"
+                                  )}
+                                >
+                                    <SendHorizonalIcon />
+                                </Button>
                             </div>
                         </FormControl>
                     </FormItem>
