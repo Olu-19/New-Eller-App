@@ -33,7 +33,7 @@ const ChatVideoButton = () => {
           label={tooltipLabel}
         >
             <button onClick={onClick} className="hover:opacity-75 transition">
-                <Icon className="w-6 h-6 text-zinc-500 dark:text-zinc-300" />
+                <Icon className="w-6 h-6 text-zinc-700 dark:text-zinc-300" />
             </button>
         </ActionTooltip>
     );
