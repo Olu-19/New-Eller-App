@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 
 import { useModal } from "@/hooks/use-modal-store";
 import { useOrigin } from "@/hooks/use-origin";
+import { cn } from "@/lib/utils";
 
 const InviteModal = () => {
 
@@ -91,7 +92,10 @@ const InviteModal = () => {
             className="text-xs text-zinc-500 mt-4"
           >
             Generate a new link
-            <RefreshCw className="w-4 h-4 ml-2" />
+            <RefreshCw className={cn(
+              "w-4 h-4 ml-2",
+              isLoading && "animate-spin"
+            )} />
           </Button>
         </div>
       </DialogContent>
